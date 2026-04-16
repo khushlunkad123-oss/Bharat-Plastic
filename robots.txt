@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Pointing bots to your sitemap
+Sitemap: https://bharatplastic.org/sitemap.xml
