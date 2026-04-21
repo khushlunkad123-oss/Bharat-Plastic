@@ -1,0 +1,458 @@
+/* ============================================================
+   BHARAT PLASTIC — Product Pages CSS
+   assets/css/products.css
+   ============================================================ */
+
+/* ── Breadcrumb ─────────────────────────────────────────────── */
+.breadcrumb-bar {
+  background: #F2F4F9;
+  padding: 12px 5%;
+  font-size: 12px;
+  color: #6A7588;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #dde2ec;
+  margin-top: 70px; /* nav height */
+}
+.breadcrumb-bar a { color: #3A4A6B; text-decoration: none; }
+.breadcrumb-bar a:hover { color: var(--red, #C8102E); }
+.bc-sep { margin: 0 8px; color: #aaa; }
+
+/* ── Product Hero ───────────────────────────────────────────── */
+.prod-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 60px 5% 80px;
+  background: #fff;
+}
+.prod-cat-badge {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--red, #C8102E);
+  background: rgba(200,16,46,0.07);
+  padding: 5px 12px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+.prod-hero-h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: 1;
+  text-transform: uppercase;
+  color: #1A2340;
+  margin: 0 0 18px;
+}
+.prod-hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: #4A5568;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+.prod-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.prod-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #5A6478;
+}
+.prod-trust span { display: flex; align-items: center; gap: 4px; }
+.prod-hero-img {
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f0efeb;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.prod-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Product Detail + Specs ─────────────────────────────────── */
+.prod-detail-section {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 60px;
+  align-items: start;
+  padding: 80px 5%;
+  background: #F2F4F9;
+}
+.prod-intro-text {
+  font-size: 16px;
+  color: #4A5568;
+  line-height: 1.8;
+  margin: 20px 0 18px;
+  font-weight: 400;
+}
+.prod-detail-content p {
+  font-size: 15px;
+  color: #4A5568;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.prod-specs-box {
+  background: #fff;
+  border-radius: 4px;
+  padding: 28px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 90px;
+}
+.specs-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #1A2340;
+  margin: 0 0 18px;
+  letter-spacing: 0.5px;
+}
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+.specs-table tr { border-bottom: 1px solid #eee; }
+.specs-table tr:last-child { border-bottom: none; }
+.spec-label {
+  padding: 9px 12px 9px 0;
+  font-weight: 700;
+  color: #1A2340;
+  white-space: nowrap;
+  width: 40%;
+  vertical-align: top;
+}
+.spec-val {
+  padding: 9px 0;
+  color: #4A5568;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.specs-cta {
+  display: block;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Compliance Note ────────────────────────────────────────── */
+/*
+ * Lives at the foot of .prod-detail-content (left description column),
+ * injected via SSI: <!--#include virtual="/products/_compliance-note.html" -->
+ *
+ * Every token intentionally mirrors the existing design language:
+ *   Red top-border   → same treatment as .prod-cta-section
+ *   Icon circle      → scaled-up version of .app-dot
+ *   Label pill       → identical to .prod-cat-badge
+ *   Body copy        → matches .prod-detail-content p (15px / 300 / #4A5568)
+ */
+.prod-compliance-note {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: #fff;
+  border-top: 3px solid var(--red, #C8102E);
+  border-radius: 0 0 4px 4px;
+  padding: 20px 22px;
+  margin-top: 32px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+
+.prod-compliance-note__icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: var(--red, #C8102E);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-top: 3px;
+}
+
+.prod-compliance-note__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.prod-compliance-note__label {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--red, #C8102E);
+  background: rgba(200,16,46,0.07);
+  padding: 4px 10px;
+  border-radius: 2px;
+  margin-bottom: 9px;
+}
+
+.prod-compliance-note__text {
+  font-size: 13px;
+  color: #4A5568;
+  line-height: 1.7;
+  font-weight: 300;
+  margin: 0;
+}
+
+.prod-compliance-note__text strong {
+  font-weight: 700;
+  color: #1A2340;
+}
+
+/* ── Applications ───────────────────────────────────────────── */
+.prod-apps-section {
+  background: #1A2340;
+  padding: 80px 5%;
+  color: #fff;
+}
+.app-list {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.app-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #CBD5E0;
+  line-height: 1.4;
+}
+.app-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red, #C8102E);
+  flex-shrink: 0;
+}
+
+/* ── FAQ (product page) ─────────────────────────────────────── */
+.prod-faq-section {
+  background: #fff;
+  padding: 80px 5%;
+}
+.prod-faq-section .faq-list { max-width: 820px; }
+
+/* ── CTA Banner ─────────────────────────────────────────────── */
+.prod-cta-section {
+  background: #F2F4F9;
+  padding: 60px 5%;
+  border-top: 2px solid var(--red, #C8102E);
+}
+.prod-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.prod-cta-h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, 38px);
+  text-transform: uppercase;
+  color: #1A2340;
+  line-height: 1.1;
+  margin: 0 0 10px;
+}
+.prod-cta-sub {
+  font-size: 15px;
+  color: #4A5568;
+  font-weight: 300;
+  max-width: 500px;
+  line-height: 1.6;
+  margin: 0;
+}
+.prod-cta-btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff;
+  padding: 13px 24px;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.btn-wa:hover { background: #1ebe5d; }
+
+/* ── Mobile ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .prod-hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 5% 60px; }
+  .prod-hero-img { order: -1; max-height: 280px; }
+  .prod-detail-section { grid-template-columns: 1fr; gap: 32px; }
+  .prod-specs-box { position: static; }
+  .prod-cta-inner { flex-direction: column; align-items: flex-start; }
+  .prod-compliance-note { gap: 14px; }
+}
+@media (max-width: 600px) {
+  .breadcrumb-bar { font-size: 11px; }
+  .prod-hero { padding: 32px 4% 48px; }
+  .prod-detail-section, .prod-apps-section, .prod-faq-section, .prod-cta-section { padding: 60px 4%; }
+  .app-list { grid-template-columns: 1fr; }
+  .prod-hero-actions { flex-direction: column; }
+  .prod-cta-btns { flex-direction: column; width: 100%; }
+  .btn-wa { justify-content: center; }
+  .specs-table { font-size: 12px; }
+  .spec-label { font-size: 11px; }
+  .prod-compliance-note { padding: 16px; }
+  .prod-compliance-note__icon { width: 30px; height: 30px; }
+}
+
+/* ── Print ──────────────────────────────────────────────────── */
+/*
+ * Activated via Ctrl/Cmd+P or File → Print. Optimises the page for
+ * paper — hides nav, CTAs, applications and FAQ; stacks the two-column
+ * layout; and injects a print-only contact footer via CSS ::after so
+ * procurement teams always have your contact details on the sheet.
+ *
+ * The compliance note is deliberately preserved and kept coloured
+ * (print-color-adjust: exact) because it carries legal/regulatory info.
+ */
+@media print {
+
+  *, *::before, *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body { font-size: 11pt; line-height: 1.5; margin: 0; padding: 0; }
+
+  /* Hide non-print chrome */
+  nav,
+  .breadcrumb-bar,
+  .prod-hero-actions,
+  .prod-trust,
+  .prod-apps-section,
+  .prod-faq-section,
+  .prod-cta-section,
+  footer,
+  .btn-primary,
+  .btn-ghost,
+  .btn-wa,
+  .specs-cta { display: none !important; }
+
+  /* Hero */
+  .prod-hero {
+    display: block;
+    padding: 14pt 0 10pt;
+    border-bottom: 1.5pt solid #1A2340;
+    background: #fff !important;
+  }
+  .prod-hero-img {
+    float: right;
+    width: 180pt;
+    aspect-ratio: auto;
+    height: auto;
+    margin: 0 0 10pt 20pt;
+    padding: 0;
+    border: 0.75pt solid #ccc;
+    border-radius: 2pt;
+    break-inside: avoid;
+  }
+  .prod-hero-h1 { font-size: 20pt; margin-bottom: 6pt; }
+  .prod-hero-sub { font-size: 10pt; max-width: none; margin-bottom: 0; }
+
+  /* Detail section: single column */
+  .prod-detail-section {
+    display: block;
+    padding: 14pt 0;
+    background: #fff !important;
+  }
+  .prod-specs-box {
+    position: static;
+    padding: 12pt 0;
+    border: none;
+    border-top: 1pt solid #ddd;
+    background: #fff !important;
+    break-inside: avoid;
+  }
+  .specs-table { font-size: 9pt; width: 100%; margin-bottom: 10pt; }
+  .specs-table tr { border-bottom: 0.5pt solid #ddd !important; }
+  .spec-label { font-weight: 700; width: 38%; padding: 4pt 8pt 4pt 0; }
+  .spec-val { padding: 4pt 0; }
+
+  /* Compliance note: keep full visual treatment on paper */
+  .prod-compliance-note {
+    display: flex !important;
+    border-top: 2pt solid #C8102E !important;
+    background: #fff !important;
+    padding: 10pt 12pt;
+    margin-top: 14pt;
+    gap: 10pt;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .prod-compliance-note__icon {
+    background: #C8102E !important;
+    color: #fff !important;
+    width: 26pt; height: 26pt;
+    border-radius: 50%;
+  }
+  .prod-compliance-note__label {
+    background: rgba(200,16,46,0.1) !important;
+    color: #C8102E !important;
+    font-size: 7pt;
+    letter-spacing: 2pt;
+  }
+  .prod-compliance-note__text { font-size: 8.5pt; }
+
+  /* Avoid widow headings */
+  h1, h2, h3, .specs-title { break-after: avoid; page-break-after: avoid; }
+
+  /* Auto-injected print footer with full contact details */
+  .prod-detail-section::after {
+    content: "Bharat Plastic Manufacturing Co.  \00b7  A-173, H Block, MIDC Pimpri, Pune 411018  \00b7  +91-98602-56222  \00b7  bharatplastic.org  \00b7  ISO 9001:2015  \00b7  EPR Registered";
+    display: block;
+    margin-top: 20pt;
+    padding-top: 6pt;
+    border-top: 0.5pt solid #bbb;
+    font-size: 7.5pt;
+    color: #555;
+    text-align: center;
+  }
+}
