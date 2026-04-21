@@ -18,7 +18,20 @@
     },
     { threshold: 0.12 }
   );
-  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  const revealEls = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  revealEls.forEach((el) => revealObserver.observe(el));
+} else {
+  // Fallback for iOS / Google App browser
+  revealEls.forEach((el) => el.classList.add('visible'));
+}
+
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+    el.classList.add('visible');
+  });
+}, 1500);
 
   /* ── 2. Nav scroll shrink (existing behaviour) ──────────────── */
   const nav = document.querySelector('nav');
