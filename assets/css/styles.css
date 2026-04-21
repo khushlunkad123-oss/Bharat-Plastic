@@ -272,9 +272,7 @@ footer{background:var(--dark);padding:60px 5% 30px;border-top:2px solid var(--re
 .nav-links {
   will-change: max-height;
 }
-nav.nav-open .nav-links {
-  max-height: 80vh; /* instead of fixed 500px */
-}
+
 
 /* Mobile Fix for Trust Bar */
 @media (max-width: 480px) {
@@ -351,18 +349,21 @@ a.product-card:visited{color:inherit;}
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    padding: 0 5%;
 
-    max-height: 0;
+    padding: 0 5%;
+    height: 0;
+    opacity: 0;
     overflow: hidden;
-    transition: all 0.35s ease;
+
+    transition: height 0.35s ease, opacity 0.25s ease;
     border-bottom: none;
   }
 
   /* Show dropdown when open */
   nav.nav-open .nav-links {
     padding: 20px 5%;
-    max-height: 100vh;
+    height: calc(100vh - 70px);
+    opacity: 1;
     border-bottom: 2px solid var(--red);
   }
 
