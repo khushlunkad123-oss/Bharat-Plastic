@@ -833,6 +833,17 @@
     trySelect();
   })();
 
+  // Download Catalogue Function
+  function downloadCatalogue() {
+    var link = document.createElement('a');
+    link.href = 'assets/docs/Bharat-Plastic-Manufacturing-Co.-Company-Profile_.pdf';
+    link.download = 'Bharat-Plastic-Manufacturing-Co.-Company-Profile.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   // ADDED: WhatsApp Enquiry Function
   function sendToWhatsApp(e) {
     e.preventDefault();
