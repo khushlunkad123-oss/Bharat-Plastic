@@ -832,6 +832,30 @@
     }
     trySelect();
   })();
+
+  // ADDED: WhatsApp Enquiry Function
+  function sendToWhatsApp(e) {
+    e.preventDefault();
+    const name = document.getElementById('f-name').value.trim();
+    const company = document.getElementById('f-company').value.trim();
+    const pos = document.getElementById('f-pos').value.trim();
+    const product = document.getElementById('f-product').value;
+    const qty = document.getElementById('f-qty').value.trim();
+    const notes = document.getElementById('f-notes').value.trim();
+
+    if (!name || !company || !pos || !product || !qty) {
+      alert('Please fill all required fields (marked *).');
+      return;
+    }
+
+    let msg = '*New Enquiry — Bharat Plastic Manufacturing Co.*\n\n';
+    msg += '👤 *Name:* ' + name + '\n🏢 *Company:* ' + company + '\n💼 *Position:* ' + pos + '\n';
+    msg += '\n📦 *Product Required:* ' + product + '\n📊 *Quantity:* ' + qty + '\n';
+    if (notes) msg += '\n📝 *Additional Requirements:*\n' + notes + '\n';
+    msg += '\n_Sent via BPMC Website_';
+
+    window.open('https://wa.me/919860256222?text=' + encodeURIComponent(msg), '_blank');
+  }
 </script>
 </body>
 </html>
