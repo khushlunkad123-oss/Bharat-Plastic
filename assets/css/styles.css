@@ -266,8 +266,15 @@ footer{background:var(--dark);padding:60px 5% 30px;border-top:2px solid var(--re
 
 /* RESPONSIVE */
 @media(max-width:1100px){.feat-grid{grid-template-columns:1fr 1fr;}.certs-grid{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:900px){.hero-stats{display:none;}.about,.contact{grid-template-columns:1fr;gap:40px;}.footer-grid{grid-template-columns:1fr;gap:36px;}.team-grid{grid-template-columns:1fr;}.nav-links{display:none;}}
+@media(max-width:900px){.hero-stats{display:none;}.about,.contact{grid-template-columns:1fr;gap:40px;}.footer-grid{grid-template-columns:1fr;gap:36px;}.team-grid{grid-template-columns:1fr;}.nav-links{display: flex;}}
 @media(max-width:700px){section{padding:60px 4%;}.hero-content{padding:100px 4% 60px;}.certs-grid{grid-template-columns:repeat(2,1fr);}.f2{grid-template-columns:1fr;}.product-desc{font-size:11px;}.product-info{padding:12px 14px;}}
+
+.nav-links {
+  will-change: max-height;
+}
+nav.nav-open .nav-links {
+  max-height: 80vh; /* instead of fixed 500px */
+}
 
 /* Mobile Fix for Trust Bar */
 @media (max-width: 480px) {
@@ -332,6 +339,13 @@ a.product-card:visited{color:inherit;}
   nav.nav-open .nav-hamburger span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
+
+@media (max-width: 900px) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 
   /* ── Hide desktop nav links ─────────────────────────────── */
   .nav-links {
