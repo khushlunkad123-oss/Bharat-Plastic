@@ -97,29 +97,36 @@
 <style>
     /* ═══ BRAND TOKENS — exact bharatplastic.org palette ═══ */
     :root {
-      --bp-navy:       #07112E;
-      --bp-navy-mid:   #0D1B4B;
-      --bp-navy-light: #1A2E6E;
-      --bp-orange:     #CC1B1B;
-      --bp-orange-lt:  #E52222;
-      --bp-white:      #ffffff;
-      --bp-offwhite:   #F8F9FC;
-      --bp-gray-lt:    #E8EBF2;
-      --bp-gray:       #CBD5E1;
-      --bp-gray-mid:   #8A95A8;
-      --bp-text:       #0D1B4B;
-      --bp-text-mid:   #4A5568;
-      --bp-text-lt:    #8A95A8;
-      --bp-green:      #16A34A;
-      --bp-border:     #E8EBF2;
-      --radius:        2px;
-      --shadow-sm:     0 1px 3px rgba(0,0,0,0.08);
-      --shadow-md:     0 4px 16px rgba(0,0,0,0.1);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
-
+  /* ── styles.css tokens — defined inline so vars resolve before external CSS loads ── */
+  --navy:   #0D1B4B;
+  --navy-l: #1A2E6E;
+  --red:    #CC1B1B;
+  --red2:   #E52222;
+  --blue:   #2B3FCB;
+  --white:  #F8F9FC;
+  --grey:   #8A95A8;
+  --gl:     #E8EBF2;
+  --dark:   #07112E;
+  /* ── blog aliases → mapped to above ── */
+  --bp-navy:       var(--dark);
+  --bp-navy-mid:   var(--navy);
+  --bp-navy-light: var(--navy-l);
+  --bp-orange:     var(--red);
+  --bp-orange-lt:  var(--red2);
+  --bp-white:      #ffffff;
+  --bp-offwhite:   var(--white);
+  --bp-gray-lt:    var(--gl);
+  --bp-gray:       #CBD5E1;
+  --bp-gray-mid:   var(--grey);
+  --bp-text:       var(--navy);
+  --bp-text-mid:   #4A5568;
+  --bp-text-lt:    var(--grey);
+  --bp-green:      #16A34A;
+  --bp-border:     var(--gl);
+  --radius:        2px;
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:     0 4px 16px rgba(0,0,0,0.1);
+}
     body {
       background: var(--bp-offwhite);
       color: var(--bp-text);
@@ -270,7 +277,7 @@
       align-items: center;
       gap: 6px;
     }
-    .btn-primary:hover { background: var(--bp-orange-lt); text-decoration: none; transform: translateY(-1px); }
+    .btn-primary:hover { background: var(--red2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(204,27,27,0.4); text-decoration: none; }
     .btn-whatsapp {
       background: #25D366;
       color: var(--bp-white);
@@ -298,7 +305,7 @@
       text-decoration: none;
       transition: border-color 0.15s, color 0.15s;
     }
-    .btn-outline:hover { border-color: var(--bp-orange); color: var(--bp-orange-lt); text-decoration: none; }
+    .btn-outline:hover { border-color: var(--red); color: var(--red2); text-decoration: none; }
 
     /* Hero SVG panel */
     .hero-visual {
@@ -668,54 +675,7 @@
     /* ─────────────────────────────────────────
        FAQ
     ───────────────────────────────────────── */
-    .faq-section {
-      background: var(--bp-white);
-      border: 1px solid var(--bp-border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin: 28px 0;
-      box-shadow: var(--shadow-sm);
-    }
-    .faq-item { border-bottom: 1px solid var(--bp-border); }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-q {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 24px;
-      cursor: pointer;
-      gap: 16px;
-      transition: background 0.12s;
-    }
-    .faq-q:hover { background: var(--bp-offwhite); }
-    .faq-q h4 {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--bp-navy);
-      line-height: 1.4;
-    }
-    .faq-toggle {
-      min-width: 26px;
-      height: 26px;
-      border: 1.5px solid var(--bp-border);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--bp-text-lt);
-      font-size: 1rem;
-      font-weight: 400;
-      transition: all 0.15s;
-    }
-    .faq-item.open .faq-toggle {
-      background: var(--bp-orange);
-      border-color: var(--bp-orange);
-      color: var(--bp-white);
-    }
-    .faq-a { display: none; padding: 0 24px 20px; }
-    .faq-a p { font-size: 0.88rem; margin: 0; color: var(--bp-text-mid); }
-    .faq-item.open .faq-a { display: block; }
-
+    /* FAQ styles inherited from /assets/css/styles.css */
     /* ─────────────────────────────────────────
        VISUAL / COMPARISON SECTION
     ───────────────────────────────────────── */
@@ -927,7 +887,7 @@
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-    .blog-breadcrumb a { color: #8A95A8; text-decoration: none; transition: color 0.2s; }
+    .blog-breadcrumb a { color: var(--grey); text-decoration: none; transition: color 0.2s; }
     .blog-breadcrumb a:hover { color: var(--bp-orange); }
     .blog-breadcrumb span { color: var(--bp-orange); }
     .blog-post-tag {
@@ -959,7 +919,7 @@
       gap: 24px;
       flex-wrap: wrap;
       font-size: 12px;
-      color: #8A95A8;
+      color: var(--grey);
       font-weight: 600;
       letter-spacing: 0.5px;
     }
@@ -1002,14 +962,14 @@
     }
     .sidebar-cta p {
       font-size: 13px;
-      color: #8A95A8;
+      color: var(--grey);
       margin-bottom: 18px;
       line-height: 1.6;
       font-weight: 300;
     }
     .sidebar-cta .btn-primary { width: 100%; justify-content: center; margin-bottom: 10px; border-radius: 2px; }
     .sidebar-cta .btn-whatsapp { width: 100%; justify-content: center; font-size: 0.78rem; padding: 9px 16px; border-radius: 2px; }
-    .sidebar-wa-note { font-size: 11px; color: #8A95A8; margin-top: 10px; }
+    .sidebar-wa-note { font-size: 11px; color: var(--grey); margin-top: 10px; }
     .related-post-link {
       display: block;
       text-decoration: none;
@@ -1299,6 +1259,17 @@
 </svg>
 </div>
 <hr class="article-rule"/>
+<!-- INLINE CTA: Polythene Tubing Rolls -->
+<div style="background:var(--bp-navy);border-radius:2px;padding:28px 32px;margin:36px 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border-left:4px solid var(--bp-orange);">
+  <div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bp-orange);margin-bottom:6px;">Bharat Plastic Mfg. Co.</div>
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;color:#fff;margin-bottom:6px;line-height:1.1;">Need Polythene Tubing Rolls in Bulk?</h3>
+    <p style="font-size:13px;color:#8A95A8;margin:0;font-weight:300;line-height:1.6;">We manufacture lay-flat LDPE tubing rolls to custom width, thickness and length. ISO 9001-certified, Pimpri MIDC, Pune.</p>
+  </div>
+  <a href="https://bharatplastic.org/products/polythene-tubing-roll/" style="white-space:nowrap;background:var(--bp-orange);color:#fff;text-decoration:none;padding:12px 24px;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;border-radius:2px;display:inline-flex;align-items:center;gap:8px;flex-shrink:0;">View Polythene Tubing Rolls →</a>
+</div>
+<!-- /INLINE CTA -->
+<hr class="article-rule"/>
 <!-- SECTION 5 -->
 <span class="section-label" id="s5">Section 05</span>
 <h2 class="section-title">LDPE vs. Other Plastic Types: Why It Wins for Tubing</h2>
@@ -1430,70 +1401,35 @@
 <!-- FAQ -->
 <span class="section-label" id="sfaq">Frequently Asked Questions</span>
 <h2 class="section-title">Polythene Tubing Rolls — FAQ</h2>
-<div class="faq-section">
-<div class="faq-item open">
-<div class="faq-q" onclick="toggle(this)">
-<h4>What is the difference between lay-flat tubing and a regular polythene bag?</h4>
-<div class="faq-toggle">−</div>
-</div>
-<div class="faq-a">
-<p>A <strong>lay-flat polythene tubing roll</strong> is a continuous tube wound on a core — it has no bottom seal. You cut it to any length and heat-seal the bottom (and optionally the top) to make a bag. A regular <strong>polythene bag</strong> comes pre-made with a fixed height and is already sealed at the bottom. The tubing roll gives you unlimited flexibility in bag length; the pre-made bag is more convenient but constrained to its fixed size.</p>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">
-<h4>What does "lay-flat width" mean and how do I calculate the bag size?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-<p>The <strong>lay-flat width</strong> is the width of the flattened tube as supplied. When opened, the tube's internal circumference ≈ 2 × lay-flat width. To find the bag width (when the tube is opened flat into a bag), divide the lay-flat width by 0.5 — no, the opened bag width equals the lay-flat width on each face. So a 300mm lay-flat tube gives a bag that is 300mm wide. The tube diameter ≈ lay-flat width × 2 ÷ π. Contact Bharat Plastic with your product dimensions and we'll recommend the right <strong>poly tubing sizes</strong>.</p>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">
-<h4>What thickness (microns) should I order for industrial use?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-<p>In Maharashtra, plastic waste management rules mandate a minimum thickness of <strong>50 microns</strong> — all Bharat Plastic tubing meets this requirement. For standard industrial use (hardware, engineering components, auto parts), 75–150 µm is the typical range. Heavy-duty use (steel profiles, heavy machinery parts, construction) often requires 200–250+ µm <strong>LDPE plastic</strong>. <strong>Plastic bag thickness</strong> directly affects cost per roll, so always match thickness to actual protection requirements. Bharat Plastic can advise on the right <strong>plastic microns</strong> for your specific application.</p>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">
-<h4>Can polythene tubing rolls be printed with my logo?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-<p>Yes. <strong>Printed poly tubing</strong> — also called <strong>custom printed poly tubing</strong> or <strong>printed polythene rolls</strong> — is available with flexographic printing. Supply your artwork and specify the number of colours. Printing requires a minimum order quantity (MOQ) and slightly longer lead times than plain <strong>clear polythene</strong> tubing. Contact Bharat Plastic for <strong>bag printing in Pune</strong> quotes and specifications.</p>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">
-<h4>What is LDPE and how is it different from HDPE?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-<p><strong>Low density polyethylene (LDPE)</strong> has a branched molecular structure giving it high flexibility, softness, and ease of heat sealing. <strong>High density polyethylene (HDPE)</strong> has a more linear structure, making it stiffer, stronger, and less flexible. For <strong>lay-flat tubing</strong> and flexible packaging, <strong>LDPE plastic</strong> is preferred because it collapses flat without cracking and seals reliably. HDPE is better for bags requiring higher strength and less flexibility. The <strong>low density polyethylene density</strong> (0.910–0.940 g/cm³) is notably lower than HDPE (0.941–0.965 g/cm³).</p>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">
-<h4>What is the minimum order quantity from Bharat Plastic for polythene tubing rolls?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-<p>Bharat Plastic caters to both small and bulk buyers as a <strong>plastic fabrication company</strong> in Pune. Minimum order quantities vary by width and thickness. Please contact us directly at <a href="https://bharatplastic.org/products/polythene-tubing-roll/">bharatplastic.org</a> with your specifications for a custom quote. We work with buyers ranging from small local manufacturers to large industrial packaging operations across Maharashtra.</p>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">
-<h4>What is "heat seal tubing" and do I need special equipment?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-<p><strong>Heat seal tubing</strong> refers to <strong>LDPE polythene tubing</strong> that can be sealed using heat — either an impulse sealer (the most common for small operations) or a continuous band sealer. For <strong>heat sealed plastic bags</strong> made from tubing, a basic hand-operated impulse sealer costing a few hundred rupees is sufficient for light duty. Higher-speed <strong>heat seal plastic roll</strong> operations use continuous band sealers or inline sealing machines. No complex equipment is required to start using <strong>lay-flat polythene tubing</strong>.</p>
-</div>
-</div>
+<div class="faq-list">
+<details class="faq-item">
+<summary class="faq-q">What is the difference between lay-flat tubing and a regular polythene bag?</summary>
+<div class="faq-a">A <strong>lay-flat polythene tubing roll</strong> is a continuous tube wound on a core — it has no bottom seal. You cut it to any length and heat-seal the bottom (and optionally the top) to make a bag. A regular <strong>polythene bag</strong> comes pre-made with a fixed height and is already sealed at the bottom. The tubing roll gives you unlimited flexibility in bag length; the pre-made bag is more convenient but constrained to its fixed size.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">What does "lay-flat width" mean and how do I calculate the bag size?</summary>
+<div class="faq-a">The <strong>lay-flat width</strong> is the width of the flattened tube as supplied. When opened, the opened bag width equals the lay-flat width on each face — so a 300mm lay-flat tube gives a bag that is 300mm wide. The tube diameter ≈ lay-flat width × 2 ÷ π. Contact Bharat Plastic with your product dimensions and we'll recommend the right <strong>poly tubing sizes</strong>.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">What thickness (microns) should I order for industrial use?</summary>
+<div class="faq-a">In Maharashtra, plastic waste management rules mandate a minimum thickness of <strong>50 microns</strong> — all Bharat Plastic tubing meets this requirement. For standard industrial use (hardware, engineering components, auto parts), 75–150 µm is the typical range. Heavy-duty use (steel profiles, heavy machinery parts, construction) often requires 200–250+ µm <strong>LDPE plastic</strong>. Bharat Plastic can advise on the right <strong>plastic microns</strong> for your specific application.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">Can polythene tubing rolls be printed with my logo?</summary>
+<div class="faq-a">Yes. <strong>Printed poly tubing</strong> — also called <strong>custom printed poly tubing</strong> or <strong>printed polythene rolls</strong> — is available with flexographic printing. Supply your artwork and specify the number of colours. Printing requires a minimum order quantity (MOQ) and slightly longer lead times than plain <strong>clear polythene</strong> tubing. Contact Bharat Plastic for <strong>bag printing in Pune</strong> quotes and specifications.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">What is LDPE and how is it different from HDPE?</summary>
+<div class="faq-a"><strong>Low density polyethylene (LDPE)</strong> has a branched molecular structure giving it high flexibility, softness, and ease of heat sealing. <strong>High density polyethylene (HDPE)</strong> has a more linear structure, making it stiffer, stronger, and less flexible. For <strong>lay-flat tubing</strong> and flexible packaging, <strong>LDPE plastic</strong> is preferred because it collapses flat without cracking and seals reliably. HDPE is better for bags requiring higher strength and less flexibility.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">What is the minimum order quantity from Bharat Plastic for polythene tubing rolls?</summary>
+<div class="faq-a">Bharat Plastic caters to both small and bulk buyers as a <strong>plastic fabrication company</strong> in Pune. Minimum order quantities vary by width and thickness. Please contact us directly at <a href="https://bharatplastic.org/products/polythene-tubing-roll/">bharatplastic.org</a> with your specifications for a custom quote. We work with buyers ranging from small local manufacturers to large industrial packaging operations across Maharashtra.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">What is "heat seal tubing" and do I need special equipment?</summary>
+<div class="faq-a"><strong>Heat seal tubing</strong> refers to <strong>LDPE polythene tubing</strong> that can be sealed using heat — either an impulse sealer (the most common for small operations) or a continuous band sealer. For <strong>heat sealed plastic bags</strong> made from tubing, a basic hand-operated impulse sealer is sufficient for light duty. No complex equipment is required to start using <strong>lay-flat polythene tubing</strong>.</div>
+</details>
 </div>
 <hr class="article-rule"/>
 <!-- RELATED PRODUCTS — all verified URLs from bharatplastic.org -->
@@ -1578,13 +1514,30 @@
 <h2 id="cta-heading">Get a Quote for Polythene Tubing Roll</h2>
 <p>Bharat Plastic manufactures custom lay-flat polythene tubing rolls in Pimpri MIDC, Pune. Tell us your width, thickness, and quantity — we'll get back to you with competitive pricing direct from the plastic factory.</p>
 <div class="cta-buttons">
-<a class="btn-primary" href="/#contact">Request a Quote →</a>
+<a class="btn-primary" href="https://bharatplastic.org/products/polythene-tubing-roll/">View Polythene Tubing Rolls →</a>
 <a class="btn-whatsapp" href="https://wa.me/919860256222?text=Hi%2C%20I%20visited%20your%20website%20bharatplastic.org%20and%20I%27m%20interested%20in%20%2APolythene%20Tubing%20Roll%2A.%20Could%20you%20please%20share%20pricing%2C%20MOQ%20and%20availability%3F%20Thank%20you.">
 <svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
         WhatsApp Us
       </a>
-<a class="btn-outline" href="https://bharatplastic.org/products/polythene-tubing-roll/">View Product Page</a>
+<a class="btn-outline" href="/#contact">Get a Quote</a>
 </div>
+</div>
+</section>
+<!-- ── SOURCES ────────────────────────────────────────────────── -->
+<section style="background:#F2F4F9;padding:48px 5%;border-top:1px solid #E8EBF2;">
+<div style="max-width:780px;margin:0 auto;">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+    <div style="width:36px;height:2px;background:#CC1B1B;flex-shrink:0;"></div>
+    <span style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#CC1B1B;">Sources &amp; References</span>
+  </div>
+  <p style="font-size:13px;color:#8A95A8;margin-bottom:20px;font-weight:300;line-height:1.7;">The regulatory and material information in this article is based on the following publicly available sources:</p>
+  <ol style="display:flex;flex-direction:column;gap:12px;margin-left:20px;">
+    <li style="font-size:13px;color:#4A5568;line-height:1.7;font-weight:300;"><strong style="color:#0D1B4B;">Plastic Waste Management (Amendment) Rules, 2021</strong> — Ministry of Environment, Forest and Climate Change, Government of India. Published in the Gazette of India, Extraordinary, February 2021. Sets the minimum permissible thickness for plastic products at 50 microns in Maharashtra and across India.</li>
+    <li style="font-size:13px;color:#4A5568;line-height:1.7;font-weight:300;"><strong style="color:#0D1B4B;">Extended Producer Responsibility (EPR) Guidelines for Plastic Packaging</strong> — Central Pollution Control Board (CPCB), Ministry of Environment, Forest and Climate Change, Government of India, 2022. EPR compliance is mandatory for plastic manufacturers and importers.</li>
+    <li style="font-size:13px;color:#4A5568;line-height:1.7;font-weight:300;"><strong style="color:#0D1B4B;">LDPE Material Properties (Density, Temperature Range, Flexibility)</strong> — PlasticsEurope (Association of Plastics Manufacturers). Published material datasheets and technical guides covering low density polyethylene (LDPE) characterisation, including density (0.910–0.940 g/cm³) and performance characteristics. Available at plasticseurope.org.</li>
+    <li style="font-size:13px;color:#4A5568;line-height:1.7;font-weight:300;"><strong style="color:#0D1B4B;">Blown Film Extrusion Process</strong> — General polymer processing literature and industry technical guides. The blown-film extrusion method described is the standard industrial process for producing lay-flat LDPE tubing rolls globally.</li>
+    <li style="font-size:13px;color:#4A5568;line-height:1.7;font-weight:300;"><strong style="color:#0D1B4B;">ISO 9001:2015 Quality Management Systems</strong> — International Organization for Standardization. Bharat Plastic Mfg. Co. operates under ISO 9001:2015 certification across all manufacturing processes at Pimpri MIDC, Pune.</li>
+  </ol>
 </div>
 </section>
 <!-- ═══════════════════════════════════════════
@@ -1593,18 +1546,6 @@
 <div id="site-footer"></div>
 <script src="/assets/js/footer.js"></script>
 <script>
-  function toggle(el) {
-    const item = el.closest('.faq-item');
-    document.querySelectorAll('.faq-item').forEach(i => {
-      if (i !== item) {
-        i.classList.remove('open');
-        i.querySelector('.faq-toggle').textContent = '+';
-      }
-    });
-    const isOpen = item.classList.toggle('open');
-    el.querySelector('.faq-toggle').textContent = isOpen ? '−' : '+';
-  }
-
   // Smooth scroll for TOC
   document.querySelectorAll('.toc-list a').forEach(a => {
     a.addEventListener('click', e => {

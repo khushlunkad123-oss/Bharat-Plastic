@@ -442,7 +442,7 @@ a.product-card:visited{color:inherit;}
   background-size: 60px 60px;
   animation: gridShift 20s linear infinite;
 }
-.blog-hero-content { position: relative; z-index: 2; max-width: 680px; }
+.blog-hero-content { position: relative; z-index: 2; max-width: 780px; }
 .blog-hero h1 {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
@@ -459,6 +459,60 @@ a.product-card:visited{color:inherit;}
   color: #8A95A8;
   line-height: 1.7;
   max-width: 520px;
+}
+.blog-hero-lead {
+  font-size: 17px;
+  font-weight: 300;
+  color: #8A95A8;
+  line-height: 1.75;
+  max-width: 600px;
+  margin-bottom: 28px;
+}
+/* Topic pills */
+.blog-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+.blog-hero-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #E87878;
+  background: rgba(204,27,27,0.12);
+  border: 1px solid rgba(204,27,27,0.3);
+  border-radius: 2px;
+  padding: 5px 12px;
+}
+/* Mini stats row */
+.blog-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.blog-hero-stat { display: flex; flex-direction: column; gap: 3px; }
+.bhs-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  color: #fff;
+  line-height: 1;
+}
+.bhs-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #5A6478;
+}
+.blog-hero-stat-div {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.1);
+  flex-shrink: 0;
 }
 
 /* ── Blog Grid ──────────────────────────────────────────────── */
@@ -774,7 +828,7 @@ a.product-card:visited{color:inherit;}
   font-weight: 300;
   transition: transform 0.2s;
 }
-details[open] .blog-faq-q::after { transform: translateY(-50%) rotate(45deg); }
+.blog-faq-item[open] .blog-faq-q::after { transform: translateY(-50%) rotate(45deg); }
 .blog-faq-a {
   font-size: 14.5px;
   color: #4A5568;
@@ -891,7 +945,22 @@ details[open] .blog-faq-q::after { transform: translateY(-50%) rotate(45deg); }
 <div class="blog-hero-content reveal">
 <div class="ey"><div class="el"></div><span class="et">Knowledge Hub</span></div>
 <h1>Packaging<br/><span class="accent">Insights</span></h1>
-<p>Expert guides on LDPE bags, BOPP tapes, VCI packaging, stretch film and industrial plastics — straight from Bharat Plastic's 55+ years of manufacturing experience in Pune.</p>
+<p class="blog-hero-lead">Your go-to resource for plastic manufacturing, industrial packaging, and polymer science — written by experts with over five decades in the industry in Pune. Whether you're sourcing LDPE bags, understanding VCI packaging, or comparing stretch film vs shrink film, our guides help procurement teams, OEMs, and traders make smarter buying decisions.</p>
+<div class="blog-hero-tags">
+  <span class="blog-hero-tag">LDPE Bags</span>
+  <span class="blog-hero-tag">BOPP Tapes</span>
+  <span class="blog-hero-tag">VCI Packaging</span>
+  <span class="blog-hero-tag">Stretch Film</span>
+  <span class="blog-hero-tag">Polythene Rolls</span>
+  <span class="blog-hero-tag">Industrial Plastics</span>
+</div>
+<div class="blog-hero-stats">
+  <div class="blog-hero-stat"><span class="bhs-num">55+</span><span class="bhs-label">Years of Manufacturing</span></div>
+  <div class="blog-hero-stat-div"></div>
+  <div class="blog-hero-stat"><span class="bhs-num">ISO</span><span class="bhs-label">9001:2015 Certified</span></div>
+  <div class="blog-hero-stat-div"></div>
+  <div class="blog-hero-stat"><span class="bhs-num">Pune</span><span class="bhs-label">Pimpri MIDC Factory</span></div>
+</div>
 </div>
 </section>
 <section aria-label="All Blog Posts" class="blog-index">

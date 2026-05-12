@@ -107,28 +107,36 @@
 <style>
   /* ═══ BRAND TOKENS ═══ */
   :root {
-    --bp-navy:       #07112E;
-    --bp-navy-mid:   #0D1B4B;
-    --bp-navy-light: #1A2E6E;
-    --bp-orange:     #CC1B1B;
-    --bp-orange-lt:  #E52222;
-    --bp-white:      #ffffff;
-    --bp-offwhite:   #F8F9FC;
-    --bp-gray-lt:    #E8EBF2;
-    --bp-gray:       #CBD5E1;
-    --bp-gray-mid:   #8A95A8;
-    --bp-text:       #0D1B4B;
-    --bp-text-mid:   #4A5568;
-    --bp-text-lt:    #8A95A8;
-    --bp-green:      #16A34A;
-    --bp-border:     #E8EBF2;
-    --radius:        2px;
-    --shadow-sm:     0 1px 3px rgba(0,0,0,0.08);
-    --shadow-md:     0 4px 16px rgba(0,0,0,0.1);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-size: 16px; scroll-behavior: smooth; }
+  /* ── styles.css tokens — defined inline so vars resolve before external CSS loads ── */
+  --navy:   #0D1B4B;
+  --navy-l: #1A2E6E;
+  --red:    #CC1B1B;
+  --red2:   #E52222;
+  --blue:   #2B3FCB;
+  --white:  #F8F9FC;
+  --grey:   #8A95A8;
+  --gl:     #E8EBF2;
+  --dark:   #07112E;
+  /* ── blog aliases → mapped to above ── */
+  --bp-navy:       var(--dark);
+  --bp-navy-mid:   var(--navy);
+  --bp-navy-light: var(--navy-l);
+  --bp-orange:     var(--red);
+  --bp-orange-lt:  var(--red2);
+  --bp-white:      #ffffff;
+  --bp-offwhite:   var(--white);
+  --bp-gray-lt:    var(--gl);
+  --bp-gray:       #CBD5E1;
+  --bp-gray-mid:   var(--grey);
+  --bp-text:       var(--navy);
+  --bp-text-mid:   #4A5568;
+  --bp-text-lt:    var(--grey);
+  --bp-green:      #16A34A;
+  --bp-border:     var(--gl);
+  --radius:        2px;
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:     0 4px 16px rgba(0,0,0,0.1);
+}
   body {
     background: var(--bp-offwhite);
     color: var(--bp-text);
@@ -156,7 +164,7 @@
     display: flex; align-items: center; gap: 8px; margin-bottom: 24px;
     font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
   }
-  .blog-breadcrumb a { color: #8A95A8; text-decoration: none; transition: color 0.2s; }
+  .blog-breadcrumb a { color: var(--grey); text-decoration: none; transition: color 0.2s; }
   .blog-breadcrumb a:hover { color: var(--bp-orange); }
   .blog-breadcrumb span { color: var(--bp-orange); }
   .blog-post-tag {
@@ -173,7 +181,7 @@
   .blog-post-h1 span { color: var(--bp-orange); }
   .blog-post-meta {
     display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
-    font-size: 12px; color: #8A95A8; font-weight: 600; letter-spacing: 0.5px;
+    font-size: 12px; color: var(--grey); font-weight: 600; letter-spacing: 0.5px;
   }
   .blog-post-meta span { display: flex; align-items: center; gap: 6px; }
 
@@ -220,7 +228,7 @@
     font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px;
     text-transform: uppercase; color: #fff; margin-bottom: 10px; line-height: 1.1;
   }
-  .sidebar-cta p { font-size: 13px; color: #8A95A8; margin-bottom: 18px; line-height: 1.6; font-weight: 300; }
+  .sidebar-cta p { font-size: 13px; color: var(--grey); margin-bottom: 18px; line-height: 1.6; font-weight: 300; }
   .sidebar-cta .btn-primary { width: 100%; justify-content: center; margin-bottom: 10px; border-radius: 2px; }
   .sidebar-cta .btn-whatsapp { width: 100%; justify-content: center; font-size: 0.78rem; padding: 9px 16px; border-radius: 2px; }
   .related-post-link {
@@ -340,31 +348,7 @@
   .tag-pill.green { background: rgba(22,163,74,0.12); color: var(--bp-green); }
 
   /* ─── FAQ ─── */
-  .faq-section {
-    background: var(--bp-white); border: 1px solid var(--bp-border);
-    border-radius: var(--radius); overflow: hidden; margin: 28px 0; box-shadow: var(--shadow-sm);
-  }
-  .faq-item { border-bottom: 1px solid var(--bp-border); }
-  .faq-item:last-child { border-bottom: none; }
-  .faq-q {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 18px 24px; cursor: pointer; gap: 16px; transition: background 0.12s;
-  }
-  .faq-q:hover { background: var(--bp-offwhite); }
-  .faq-q h4 { font-size: 0.9rem; font-weight: 600; color: var(--bp-navy); line-height: 1.4; }
-  .faq-toggle {
-    min-width: 26px; height: 26px; border: 1.5px solid var(--bp-border); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--bp-text-lt); font-size: 1rem; font-weight: 400; transition: all 0.15s;
-  }
-  .faq-item.open .faq-toggle { background: var(--bp-orange); border-color: var(--bp-orange); color: #fff; }
-  .faq-a {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
-    font-size: 0.88rem; color: var(--bp-text-mid); line-height: 1.65;
-  }
-  .faq-item.open .faq-a { max-height: 400px; padding: 0 24px 20px; }
-
+    /* FAQ styles inherited from /assets/css/styles.css */
   /* ─── BUTTONS ─── */
   .btn-primary {
     display: inline-flex; align-items: center; gap: 8px;
@@ -372,7 +356,7 @@
     padding: 13px 28px; border-radius: 2px; text-decoration: none; letter-spacing: 0.5px;
     transition: background 0.15s, transform 0.15s;
   }
-  .btn-primary:hover { background: var(--bp-orange-lt); transform: translateY(-1px); text-decoration: none; }
+  .btn-primary:hover { background: var(--red2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(204,27,27,0.4); text-decoration: none; }
   .btn-whatsapp {
     display: inline-flex; align-items: center; gap: 8px;
     background: #25D366; color: #fff; font-size: 0.88rem; font-weight: 700;
@@ -917,6 +901,16 @@
 </div>
 <!-- ══ SECTION 6: SPECIFICATIONS FROM BHARAT PLASTIC ══ -->
 <hr class="article-rule"/>
+<!-- INLINE CTA: Polythene Sheet Roll -->
+<div style="background:var(--bp-navy);border-radius:2px;padding:28px 32px;margin:0 0 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border-left:4px solid var(--bp-orange);">
+  <div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bp-orange);margin-bottom:6px;">Bharat Plastic Mfg. Co.</div>
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;color:#fff;margin-bottom:6px;line-height:1.1;">Need Polythene Sheet Roll in Bulk?</h3>
+    <p style="font-size:13px;color:#8A95A8;margin:0;font-weight:300;line-height:1.6;">We manufacture LDPE polythene sheet rolls to custom width, thickness and roll length. ISO 9001-certified, Pimpri MIDC, Pune.</p>
+  </div>
+  <a href="https://bharatplastic.org/products/polythene-sheet-roll/" style="white-space:nowrap;background:var(--bp-orange);color:#fff;text-decoration:none;padding:12px 24px;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;border-radius:2px;display:inline-flex;align-items:center;gap:8px;flex-shrink:0;">View Polythene Sheet Rolls →</a>
+</div>
+<!-- /INLINE CTA -->
 <span class="section-label" id="s6">Section 06</span>
 <h2 class="section-title">Bharat Plastic Polythene Sheet Roll — Full Specifications</h2>
 <p>
@@ -1084,61 +1078,31 @@
 <hr class="article-rule"/>
 <span class="section-label" id="s9">Section 09</span>
 <h2 class="section-title">Frequently Asked Questions</h2>
-<div class="faq-section">
-<div class="faq-item">
-<div aria-expanded="false" class="faq-q" onclick="toggle(this)" role="button">
-<h4>What is a polythene sheet roll used for?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-          LDPE polythene sheet rolls are used as protective floor covering in construction, damp-proof membranes (DPM), greenhouse film, mulching sheets in agriculture, machine covers, packaging liners, dust-proof covers, and concrete curing sheets. Their flexibility and moisture resistance make them ideal for both industrial and agricultural applications.
-        </div>
-</div>
-<div class="faq-item">
-<div aria-expanded="false" class="faq-q" onclick="toggle(this)" role="button">
-<h4>What thickness of polythene sheet roll should I buy?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-          For light-duty indoor coverage, 50–75 microns is sufficient. Construction floor protection requires 100–150 microns. Heavy-duty applications like damp-proof membranes, pond liners, and long-term outdoor covers need 200–300 microns. In Maharashtra, the minimum legal thickness for plastic sheeting is 50 microns under the Plastic Waste Management Rules 2016.
-        </div>
-</div>
-<div class="faq-item">
-<div aria-expanded="false" class="faq-q" onclick="toggle(this)" role="button">
-<h4>What is the difference between a polythene sheet roll and polythene tubing?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-          A polythene sheet roll is a flat, single-layer film — open on both sides — supplied as a wide roll to lay flat as a covering or protective sheet. A polythene tubing roll is a seamless tube (lay-flat) that you cut to length and heat-seal to make bags. If you need a floor or machinery covering, choose a sheet roll. If you need to make bags for components or storage, choose the tubing roll.
-        </div>
-</div>
-<div class="faq-item">
-<div aria-expanded="false" class="faq-q" onclick="toggle(this)" role="button">
-<h4>Can I get polythene sheet rolls in black colour?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-          Yes. Bharat Plastic Manufacturing Co. supplies polythene sheet rolls in natural (clear/milky), black, and other custom colours. Black polythene is widely used for agriculture mulching, root zone temperature management, and light-blocking applications. Black polythene sheet rolls are available in all standard thicknesses and widths.
-        </div>
-</div>
-<div class="faq-item">
-<div aria-expanded="false" class="faq-q" onclick="toggle(this)" role="button">
-<h4>Is LDPE plastic safe for food contact use?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-          Virgin LDPE is generally recognised as food-safe (FDA, EU food contact regulations). However, any food-contact application should be specified at the time of ordering so that appropriate food-grade additives and virgin-only raw material is used. Always confirm food-contact suitability with the manufacturer when ordering for this purpose.
-        </div>
-</div>
-<div class="faq-item">
-<div aria-expanded="false" class="faq-q" onclick="toggle(this)" role="button">
-<h4>Where can I buy polythene sheet rolls in Pune?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a">
-          Bharat Plastic Manufacturing Co. is a direct manufacturer of polythene sheet rolls at A-173, H Block, MIDC Pimpri, Pune – 411018. Buy directly at factory prices, with custom widths, thicknesses, and colours available. WhatsApp us at +91 98602 56222 or visit the product page to get a quote.
-        </div>
-</div>
+<div class="faq-list">
+<details class="faq-item">
+<summary class="faq-q">What is a polythene sheet roll used for?</summary>
+<div class="faq-a">LDPE polythene sheet rolls are used as protective floor covering in construction, damp-proof membranes (DPM), greenhouse film, mulching sheets in agriculture, machine covers, packaging liners, dust-proof covers, and concrete curing sheets. Their flexibility and moisture resistance make them ideal for both industrial and agricultural applications.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">What thickness of polythene sheet roll should I buy?</summary>
+<div class="faq-a">For light-duty indoor coverage, 50–75 microns is sufficient. Construction floor protection requires 100–150 microns. Heavy-duty applications like damp-proof membranes, pond liners, and long-term outdoor covers need 200–300 microns. In Maharashtra, the minimum legal thickness for plastic sheeting is 50 microns under the Plastic Waste Management Rules.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">What is the difference between a polythene sheet roll and polythene tubing?</summary>
+<div class="faq-a">A polythene sheet roll is a flat, single-layer film — open on both sides — supplied as a wide roll to lay flat as a covering or protective sheet. A polythene tubing roll is a seamless tube (lay-flat) that you cut to length and heat-seal to make bags. If you need a floor or machinery covering, choose a sheet roll. If you need to make bags for components or storage, choose the tubing roll.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">Can I get polythene sheet rolls in black colour?</summary>
+<div class="faq-a">Yes. Bharat Plastic Manufacturing Co. supplies polythene sheet rolls in natural (clear/milky), black, and other custom colours. Black polythene is widely used for agriculture mulching, root zone temperature management, and light-blocking applications. Black polythene sheet rolls are available in all standard thicknesses and widths.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">Is LDPE plastic safe for food contact use?</summary>
+<div class="faq-a">Virgin LDPE is generally recognised as food-safe (FDA, EU food contact regulations). However, any food-contact application should be specified at the time of ordering so that appropriate food-grade additives and virgin-only raw material is used. Always confirm food-contact suitability with the manufacturer when ordering for this purpose.</div>
+</details>
+<details class="faq-item">
+<summary class="faq-q">Where can I buy polythene sheet rolls in Pune?</summary>
+<div class="faq-a">Bharat Plastic Manufacturing Co. is a direct manufacturer of polythene sheet rolls at A-173, H Block, MIDC Pimpri, Pune – 411018. Buy directly at factory prices, with custom widths, thicknesses, and colours available. WhatsApp us at +91 98602 56222 or visit the product page to get a quote.</div>
+</details>
 </div>
 <!-- INLINE CTA -->
 <div style="background:var(--bp-navy);border-radius:2px;padding:32px;text-align:center;margin-top:48px;">
@@ -1226,7 +1190,7 @@
 <div class="sidebar-widget">
 <div class="sidebar-widget-title">Featured Product</div>
 <a href="/products/polythene-sheet-roll/" style="text-decoration:none;color:inherit;display:block;">
-<img alt="LDPE Polythene Sheet Roll — Custom Width &amp; Thickness Manufacturer Pune Maharashtra" height="192" loading="lazy" src="/assets/images/Polythene-Sheet-Roll.webp" style="width:100%;height:192px;object-fit:contain;background:#F2F4F9;border-radius:2px;display:block;margin-bottom:14px;padding:12px;" width="288"/>
+<img alt="LDPE Polythene Sheet Roll — Custom Width &amp; Thickness Manufacturer Pune Maharashtra" height="192" loading="lazy" src="/assets/images/Polythene-Rolls.webp" style="width:100%;height:192px;object-fit:contain;background:#F2F4F9;border-radius:2px;display:block;margin-bottom:14px;padding:12px;" width="288"/>
 <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:var(--navy, #0D1B4B);text-transform:uppercase;margin-bottom:4px;">Polythene Sheet Roll</div>
 <div style="font-size:11px;color:#8A95A8;margin-bottom:10px;">LDPE · Custom Widths</div>
 <p style="font-size:12.5px;color:#5A6478;line-height:1.6;font-weight:300;margin:0 0 8px;">Custom LDPE polythene sheet rolls in any width and thickness. Wholesale supply direct from our plastic factory in Pimpri MIDC, Pune.</p>
@@ -1248,6 +1212,22 @@
       </a>
 <a class="btn-outline" href="/#contact">Get a Quote</a>
 </div>
+</div>
+</section>
+<!-- SOURCES -->
+<section style="background:#F2F4F9;padding:48px 5%;border-top:1px solid #E8EBF2;">
+<div style="max-width:780px;margin:0 auto;">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+    <div style="width:36px;height:2px;background:#CC1B1B;flex-shrink:0;"></div>
+    <span style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#CC1B1B;">Sources &amp; References</span>
+  </div>
+  <p style="font-size:13px;color:#8A95A8;margin-bottom:20px;font-weight:300;line-height:1.7;">The regulatory and material information in this article is based on the following publicly available sources:</p>
+  <ol style="display:flex;flex-direction:column;gap:12px;margin-left:20px;">
+    <li style="font-size:13px;color:#4A5568;line-height:1.7;font-weight:300;"><strong style="color:#0D1B4B;">Plastic Waste Management (Amendment) Rules, 2021</strong> — Ministry of Environment, Forest and Climate Change, Government of India. Published in the Gazette of India, Extraordinary, February 2021. Governs minimum thickness, EPR compliance, and labelling requirements for plastic packaging including polythene sheet rolls.</li>
+    <li style="font-size:13px;color:#4A5568;line-height:1.7;font-weight:300;"><strong style="color:#0D1B4B;">Extended Producer Responsibility (EPR) Guidelines for Plastic Packaging</strong> — Central Pollution Control Board (CPCB), Ministry of Environment, Forest and Climate Change, Government of India, 2022.</li>
+    <li style="font-size:13px;color:#4A5568;line-height:1.7;font-weight:300;"><strong style="color:#0D1B4B;">LDPE Material Properties</strong> — PlasticsEurope (Association of Plastics Manufacturers). Published technical datasheets covering low density polyethylene properties including density, flexibility, moisture barrier, and temperature performance. Available at plasticseurope.org.</li>
+    <li style="font-size:13px;color:#4A5568;line-height:1.7;font-weight:300;"><strong style="color:#0D1B4B;">ISO 9001:2015 Quality Management Systems</strong> — International Organization for Standardization. Bharat Plastic Mfg. Co. is ISO 9001:2015 certified, with quality controls covering all manufacturing at Pimpri MIDC, Pune.</li>
+  </ol>
 </div>
 </section>
 <!-- FOOTER -->
@@ -1288,18 +1268,8 @@
 }
 </script>
 <script>
-  function toggle(el) {
-    const item = el.closest('.faq-item');
-    document.querySelectorAll('.faq-item').forEach(i => {
-      if (i !== item) {
-        i.classList.remove('open');
-        const t = i.querySelector('.faq-toggle');
-        if (t) t.textContent = '+';
-      }
     });
-    const isOpen = item.classList.toggle('open');
-    el.querySelector('.faq-toggle').textContent = isOpen ? '−' : '+';
-  }
+    const isOpen = item.classList.toggle('open');  }
 
   // Smooth scroll for TOC
   document.querySelectorAll('.toc-list a').forEach(a => {
